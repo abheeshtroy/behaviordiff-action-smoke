@@ -15,4 +15,4 @@ workflows:
     steps:
       - method: GET
         path: /quote
-        capture: {"quote": "$."}
+        capture: {"currency": "$.currency"}
