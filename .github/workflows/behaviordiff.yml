@@ -1,0 +1,25 @@
+name: BehaviorDiff
+
+on:
+  pull_request:
+
+jobs:
+  behaviordiff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: abheeshtroy/BehaviorDiff@v0.1.0-rc.1
+        with:
+          manifest: behaviordiff.yaml
+          base-ref: ${{ github.event.pull_request.base.sha }}
+          target-ref: ${{ github.event.pull_request.head.sha }}
+          fail-on-findings: true
+
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: behaviordiff-results
+          path: .behaviordiff-results/

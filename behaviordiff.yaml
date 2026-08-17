@@ -1,0 +1,18 @@
+app:
+  name: behaviordiff-action-smoke
+  start: uvicorn app:app --host 0.0.0.0 --port 8000
+  port: 8000
+  healthcheck: /health
+  dockerfile: Dockerfile
+
+compare:
+  repo: .
+  base_ref: main
+  target_ref: feature/your-change
+
+workflows:
+  - name: get-usd-quote
+    steps:
+      - method: GET
+        path: /quote
+        capture: {"quote": "$"}
