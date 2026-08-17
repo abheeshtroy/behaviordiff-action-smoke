@@ -11,4 +11,4 @@ def health() -> dict[str, str]:
 
 @app.get("/quote")
 def quote() -> dict[str, int | str]:
-    return {"currency": "USD", "amount": 100}
+    return {"currency": "EUR", "amount": 100}
