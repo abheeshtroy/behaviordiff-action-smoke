@@ -11,7 +11,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: abheeshtroy/BehaviorDiff@v0.1.0-rc.2
+      - uses: abheeshtroy/BehaviorDiff@v0.1.0-rc.3
         with:
           manifest: behaviordiff.yaml
           base-ref: ${{ github.event.pull_request.base.sha }}
